@@ -13,11 +13,21 @@
 #include "libft.h"
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
+#include <limits.h>
 
 int	main(void)
 {
 	char str[4] = {0};
-	printf("%s\n", (char *)ft_memset(str, 'S', 4));
+	int *add = malloc(sizeof(int));
+	if (!add)
+		return (0);
+	unsigned int var = -2;
+	printf("%d --> %u\n", INT_MIN, INT_MIN);
+	ft_memset(add, 12, 4);
+	printf("%u\n", *add);
+	printf("%d\n", *add);
 	printf("%s\n", str);
+	free(add);
 	return (0);
 }
