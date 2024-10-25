@@ -1,14 +1,11 @@
 #include "../libft.h"
 #include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
-#include <limits.h>
+
 
 void    test_case(char test)
 {
-    int c = isalpha(test);
-    int d = ft_isalpha(test);
+    int c = isalnum(test);
+    int d = ft_isalnum(test);
 
     printf("Expected ---> %d\nGot ---> %d\n---------------------------\n", c, d);
 }

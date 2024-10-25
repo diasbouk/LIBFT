@@ -7,8 +7,8 @@
 
 void    test_case(char test)
 {
-    int c = isalpha(test);
-    int d = ft_isalpha(test);
+    int c = isascii(test);
+    int d = ft_isascii(test);
 
     printf("Expected ---> %d\nGot ---> %d\n---------------------------\n", c, d);
 }

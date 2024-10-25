@@ -7,8 +7,8 @@
 
 void    test_case(char test)
 {
-    int c = isalpha(test);
-    int d = ft_isalpha(test);
+    int c = isdigit(test);
+    int d = ft_isdigit(test);
 
     printf("Expected ---> %d\nGot ---> %d\n---------------------------\n", c, d);
 }
@@ -19,6 +19,10 @@ int	main(void)
     test_case('A');
     test_case('=');
     test_case('#');
+    test_case('0');
+    test_case('1');
+    test_case('9');
+    test_case('5');
     test_case(123);
     test_case(-123);
     test_case(-244);
