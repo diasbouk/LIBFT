@@ -11,6 +11,6 @@ int main(void)
 {
     test_case("      Join    ", " ");
     test_case("aaaaaJoinaaaaa", "asasfd");
-    test_case("asasaaTrim this oneasassa", "ao ");
+    test_case("asasaaTrim this oneasassa", "aso ");
     return (0);
 }
