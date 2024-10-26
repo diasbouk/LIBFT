@@ -12,7 +12,17 @@
 
 #include <stdlib.h>
 
-int	is_set(char c, const char *set)
+static int	_strlen(const char *str)
+{
+	int	count;
+
+	count = 0;
+	while (str[count])
+		count++;
+	return (count);
+}
+
+static int	is_set(char c, const char *set)
 {
 	int	count;
 
@@ -28,32 +38,29 @@ int	is_set(char c, const char *set)
 
 char *ft_strtrim(char const *s1, char const *set)
 {
+	int		start_index;
+	int		end_index;
+	int		count;
 	char	*trimmed;
-	int		count_start;
-	int		count_end;
-	int		trimmed_size;
 
 	if (!s1)
 		return (NULL);
-	count_start = 0;
-	while (is_set(s1[count_start], set))
-		count_start++;
-	trimmed_size = 0;
-	while (!is_set(s1[count_start], set))
-	{
-		trimmed_size++;
-		count_start++;
-	}
-	count_start -= trimmed_size;
-	trimmed = (char *)malloc(sizeof(char) * (trimmed_size + 1));
+	start_index = 0;
+	while (is_set(s1[start_index], set))
+		start_index++;
+	end_index = _strlen(s1) - 1;
+	while (is_set(s1[end_index], set))
+		end_index--;
+	trimmed = (char *)malloc(sizeof(char) * (end_index - start_index + 1));
 	if (!trimmed)
 		return (NULL);
-	trimmed_size = 0;
-	while (s1[count_start])
+	count = 0;
+	while (start_index <= end_index)
 	{
-		trimmed[trimmed_size] = s1[count_start];
-		trimmed_size++;
-		count_start++;
+		trimmed[count] = s1[start_index];
+		start_index++;
+		count++;
 	}
-	return(trimmed);
+	trimmed[count] = '\0';
+	return (trimmed);
 }
