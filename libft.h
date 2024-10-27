@@ -6,7 +6,7 @@
 /*   By: sboukiou <sboukiou@1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:04:31 by sboukiou          #+#    #+#             */
-/*   Updated: 2024/10/26 15:56:50 by sboukiou         ###   ########.fr       */
+/*   Updated: 2024/10/27 21:30:37 by sboukiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ char	*ft_strdup(const char *str);
 char    *ft_substr(const char *s, unsigned int start, unsigned int len);
 char *ft_strjoin(char const *s1, char const *s2);
 char *ft_strtrim(char const *s1, char const *set);
+char	**ft_split(const char *s, char c);
 #endif
