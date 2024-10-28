@@ -12,7 +12,7 @@
 
 void	*ft_memchr(const void *s, int c, unsigned int n)
 {
-	const char	*str;
+	unsigned char	*str;
 
 	if (!s)
 		return ((void *)0);

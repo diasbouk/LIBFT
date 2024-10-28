@@ -13,11 +13,11 @@
 void	*ft_memset(void *s, int c, unsigned int n)
 {
 	unsigned int	size;
-	char		*buff;
+	unsigned char		*buff;
 
 	if (!s)
 		return (s);
-	buff = (char *)s;
+	buff = (unsigned char *)s;
 	size = 0;
 	while (size < n)
 	{
