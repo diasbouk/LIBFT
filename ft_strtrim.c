@@ -1,5 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -12,17 +10,7 @@
 
 #include <stdlib.h>
 
-static int	_strlen(const char *str)
-{
-	int	count;
-
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
-}
-
-static int	is_set(char c, const char *set)
+static int	ft_isset(char c, const char *set)
 {
 	int	count;
 
@@ -46,10 +34,10 @@ char *ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	start_index = 0;
-	while (is_set(s1[start_index], set))
+	while (ft_isset(s1[start_index], set))
 		start_index++;
-	end_index = _strlen(s1) - 1;
-	while (is_set(s1[end_index], set))
+	end_index = ft_strlen(s1) - 1;
+	while (ft_isset(s1[end_index], set))
 		end_index--;
 	trimmed = (char *)malloc(sizeof(char) * (end_index - start_index + 1));
 	if (!trimmed)

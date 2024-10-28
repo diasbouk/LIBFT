@@ -12,16 +12,6 @@
 
 #include <stdlib.h>
 
-static unsigned int	_strlen(const char *str)
-{
-	unsigned int count;
-
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
-}
-
 char	*ft_strdup(const char *str)
 {
 	char	*buff;
@@ -29,7 +19,7 @@ char	*ft_strdup(const char *str)
 
 	if (!str)
 		return (NULL);
-	buff = (char *)malloc(sizeof(char) * (_strlen(str) + 1));
+	buff = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
 	if (!buff)
 		return (NULL);
 	count = 0;

@@ -19,7 +19,7 @@ char    *ft_substr(const char *s, unsigned int start, unsigned int len)
 
     if (!s)
         return (NULL);
-    substring = (char *)malloc(sizeof(char) * len - start);
+    substring = (char *)malloc(sizeof(char) * (len + 1));
     if (!substring)
         return (NULL);
     count = 0;

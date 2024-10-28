@@ -12,16 +12,6 @@
 
 #include <stdlib.h>
 
-static int	_strlen(const char *str)
-{
-	int	count;
-
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		count;
@@ -30,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	buff = (char *)malloc(sizeof(char) * (_strlen(s1) + _strlen(s2) + 1));
+	buff = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!buff)
 		return (NULL);
 	count = 0;

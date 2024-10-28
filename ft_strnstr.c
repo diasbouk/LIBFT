@@ -10,37 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static unsigned int	_strlen(const char *str)
-{
-	unsigned int	len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
-}
-
-static int _strncmp(const char *s1, const char *s2, unsigned int n)
-{
-	unsigned int	count;
-
-	count = 0;
-	while ((s1[count] && s2[count]) && count < n)
-	{
-		if (s1[count] != s2[count])
-			return (s1[count] - s2[count]);
-		count++;
-	}
-	return (0);
-}
-
 char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 {
 	unsigned int	little_len;
 	unsigned int	count;
 	if (!little)
 		return ((char *)big);
-	little_len = _strlen(little);
+	little_len = ft_strlen(little);
 	if (!little_len)
 		return ((char *)big);
 	count = 0;
@@ -48,7 +24,7 @@ char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 	{
 		if (big[count] ==  little[0])
 		{
-			if (_strncmp(big + count, little, little_len) == 0)
+			if (ft_strncmp(big + count, little, little_len) == 0)
 				return ((char *)(big + count));
 		}
 		count++;

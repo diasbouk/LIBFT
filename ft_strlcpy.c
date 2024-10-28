@@ -10,16 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(const char *str)
-{
-	unsigned int	size;
-
-	size = 0;
-	while (str[size])
-		size++;
-	return (size);
-}
-
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
 	unsigned int	srclen;

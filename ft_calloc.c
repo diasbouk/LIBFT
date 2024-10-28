@@ -10,21 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static void	ft_bzero(void *address, unsigned int size)
-{
-	unsigned int	count;
-	char		*buff;
-
-	count = 0;
-	buff = (char *)address;
-	while (count < size)
-	{
-		buff[count] = '\0';
-		count++;
-	}
-}
+#include "libft.h"
 
 void	*ft_calloc(unsigned int nmemb, unsigned int size)
 {
