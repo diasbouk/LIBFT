@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <limits.h>
+#include "libft.h"
 
 static void	reverse_array(char *arr)
 {
@@ -56,14 +54,4 @@ char	*ft_itoa(int n)
 	}
 	reverse_array(buff);
 	return (buff);
-}
-
-int main(void)
-{
-	char *buffer = ft_itoa(123);
-	printf("%s\n", buffer);
-	printf("%s\n", ft_itoa(1222));
-	printf("%s\n", ft_itoa(INT_MIN));
-	printf("%d\n", INT_MIN);
-	return (0);
 }

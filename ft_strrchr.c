@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*address;
@@ -20,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (s[count])
 	{
 		if (s[count] == c)
-			address = s + count;
+			address = (char *)(s + count);
 		count++;
 	}
 	return (address);
