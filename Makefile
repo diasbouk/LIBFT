@@ -2,14 +2,19 @@ NAME=dias
 CC=cc
 CFLAGS= -Wall -Werror -Wextra
 SRCS=./*.c
-OBJS=./*.o
+OBJS=$(SRCS:.c=.o)
 LIB=libft.a
+MAIN=tests/test_lstadd_front.c
 
+OBJ:=$(ARGS:.c=.o)
 
-all: $(NAME)
-	$(CC) $(CFLAGS) $(SRCS) 
-clean: $(OBJS)
-	rm $(OBJS)
-fclean: clean
-	rm $(LIB)
-re: all
+add: $(ARGS)
+	$(CC) -c $(CFLAGS) $(ARGS)
+	ar -rs libft.a $(OBJ)
+
+main: $(MAIN)
+	$(CC) $(CFLAGS) $(MAIN) -L. libft.a -o main
+
+clean:
+	rm *.o
+	rm main
