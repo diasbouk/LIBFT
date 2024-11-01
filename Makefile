@@ -6,14 +6,20 @@ OBJS=$(SRCS:.c=.o)
 LIB=libft.a
 MAIN=tests/test_lstadd_front.c
 
-OBJ:=$(ARGS:.c=.o)
+OBJ:=$(SRC:.c=.o)
 
-add: $(ARGS)
-	$(CC) -c $(CFLAGS) $(ARGS)
+all:
+	$(CC) -c $(CFLAGS) $(SRCS)
+	ar -rcs libft.a $(OBJS)
+
+add: $(SRC)
+	$(CC) -c $(CFLAGS) $(SRC)
 	ar -rs libft.a $(OBJ)
 
 main: $(MAIN)
 	$(CC) $(CFLAGS) $(MAIN) -L. libft.a -o main
+test: $(FILE)
+	$(CC) $(CFLAGS) $(FILE) -L. libft.a -o main
 
 clean:
 	rm *.o
