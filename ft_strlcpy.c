@@ -21,7 +21,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		return (0);
 	srclen = ft_strlen(src);
 	count = 0;
-	while (count < size)
+	while (count < size - 1)
 	{
 		dest[count] = src[count];
 		count++;
