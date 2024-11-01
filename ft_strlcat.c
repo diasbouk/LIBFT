@@ -14,17 +14,18 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int	destlen;
-	unsigned int	count;
+	size_t	destlen;
+	size_t	count;
 
 	if (!src || !dest)
 		return(0);
 	count = 0;
 	destlen = ft_strlen(dest);
-	while (destlen < size - 1 && src[count])
+	while (destlen + count < size - 1 && src[count])
 	{
 		dest[destlen + count] = src[count];
 		count++;
 	}
+	dest[destlen + count] = '\0';
 	return (destlen + count);
 }
