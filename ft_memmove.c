@@ -20,9 +20,11 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	if (!src)
 		return (dest);
-	size = n - 1;
 	strdest = (unsigned char *)dest;
 	strsrc = (unsigned char *)src;
+	if (dest <= src)
+		return (ft_memcpy(dest, src, n));
+	size = n - 1;
 	while (size >= 0)
 	{
 		strdest[size] = strsrc[size];
