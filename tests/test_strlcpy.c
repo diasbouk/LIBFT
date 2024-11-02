@@ -2,23 +2,37 @@
 #include <bsd/string.h>
 #include <stdio.h>
 
+void	test_case(const char *desc, char *src_val, size_t size)
+{
+	char	*dest;
+	char	*dest_t;
+
+	size_t exp;
+	size_t got;
+
+	printf("\n%s\n", desc);
+	dest = ft_calloc(size, size + 1);
+	if (!dest)
+		return ;
+
+	dest_t = ft_calloc(size, size + 1);
+	if (!dest_t)
+		return ;
+
+	exp = strlcpy(dest_t, src_val, size);
+	printf("passs\n");
+	got = ft_strlcpy(dest, src_val, size);
+	printf("passs\n");
+
+	printf("Expected: %lu, '%s'\n", exp, dest_t);
+	printf("Got: %lu, '%s'\n", got, dest);
+	printf("TEST %s\n", got == exp && memcmp(dest, dest_t, size) == 0 ? "PASSED" : "FAILED");
+}
+
+
 int main(void)
 {
-	char dest0[10];
-	ft_bzero(dest0, 10);
-	/*char stddest0[10];*/
-	char *src0 = "Test source string";
-	/*char *stdsrc0 = "Test source string";*/
-	/*printf("strlcpy(dest0, src0, 10) --> %lu - %s\n", strlcpy(dest0, src0, 10), dest0);*/
-	printf("ft_strlcpy(dest0, src0, 18) --> %lu - %s\n", ft_strlcpy(dest0, src0, 18), dest0);
-	ft_bzero(dest0, 10);
-	printf("ft_strlcpy(dest0, src0, 22) --> %lu - %s\n", ft_strlcpy(dest0, src0, 22), dest0);
-	ft_bzero(dest0, 10);
-	printf("ft_strlcpy(dest0, src0, 10) --> %lu - %s\n", ft_strlcpy(dest0, src0, 10), dest0);
-	ft_bzero(dest0, 10);
-	printf("ft_strlcpy(dest0, src0, 0) --> %lu - %s\n", ft_strlcpy(dest0, src0, 0), dest0);
-	ft_bzero(dest0, 10);
-	printf("ft_strlcpy(dest0, src0, 2) --> %lu - %s\n", ft_strlcpy(dest0, src0, 2), dest0);
-	printf("End of tests\n");
+	test_case("Testing regular case, regular strings", "Source string here", 19);
+	test_case("Testing Source but size 0", "Source string here", 0);
 	return (0);
 }
