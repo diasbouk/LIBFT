@@ -19,7 +19,7 @@ add: $(SRC)
 main: $(MAIN)
 	$(CC) $(CFLAGS) $(MAIN) -L. libft.a -o main
 test: $(FILE)
-	$(CC) $(CFLAGS) $(FILE) -L. libft.a -o main
+	$(CC) $(CFLAGS) $(FILE) -L. libft.a -lbsd -o main
 
 clean:
 	rm *.o
