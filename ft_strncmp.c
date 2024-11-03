@@ -12,16 +12,27 @@
 
 #include "libft.h"
 
-int ft_strncmp(const char *s1, const char *s2, unsigned int n)
+/**
+	* ft_strncmp - compares the first n bytes of the two strings s1 and s2
+	* @s1: String 1
+	* @s2: String 2
+	* @n: Number of initial bytes to compare
+	* Return: An integer less than , equal or greater than 0
+	* according to the strings comparing
+*/
+
+int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned int	count;
 
+	if (n == 0)
+		return (0);
 	count = 0;
-	while ((s1[count] && s2[count]) && count < n)
+	while ((s1[count] || s2[count]) && count < n)
 	{
 		if (s1[count] !=  s2[count])
 			return (s1[count] - s2[count]);
 		count++;
 	}
-	return (s1[count] - s2[count]);
+	return (s1[count - 1] - s2[count - 1]);
 }
