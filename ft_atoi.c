@@ -12,6 +12,12 @@
 
 #include "./libft.h"
 
+/**
+	* is_delim - Checks if a char is a delimiter or not
+	* @c: Char to check
+	* Return: 1 if it is a delimiter , 0 otherwise
+*/
+
 static int	is_delim(char c)
 {
 	if (c == ' ' || c == '\r' || c == '\f')
@@ -21,11 +27,21 @@ static int	is_delim(char c)
 	return (0);
 }
 
+/**
+	* ft_atoi - Converts a valid alphanumerical string into an integer literal
+	* @nptr: Alphanum string to convert
+	* Return: An int depending on the nptr
+*/
+
+	/* FIX: Handle MAX_SIZE input*/
+	/* NOTE: Maybe handle setting the errno value*/
+	/*PERF: Optimise this + reduce loops and time compxs*/
+
 int	ft_atoi(const char *nptr)
 {
+	int				count;
+	int				sign;
 	unsigned int	num;
-	int		count;
-	int		sign;
 
 	count = 0;
 	while (is_delim(nptr[count]) && nptr[count])
