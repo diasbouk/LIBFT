@@ -17,6 +17,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+
+/*Tests colored*/
+//  WARNING:  Delete this later
+#define COLOR_RED     "\x1b[31m"
+#define COLOR_GREEN   "\x1b[32m"
+#define COLOR_RESET   "\x1b[0m"
+#define PASSED COLOR_GREEN "TEST PASSED" COLOR_RESET 
+#define FAILED COLOR_RED "TEST FAILED" COLOR_RESET
+
+
 /*Structures*/
 typedef struct	s_list
 {
@@ -43,7 +53,7 @@ int	ft_toupper(int c);
 int	ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, unsigned int n);
 int	ft_memcmp(const void *s1, const void *s2, unsigned int n);
 char	*ft_strnstr(const char *big, const char *little, unsigned int len);
