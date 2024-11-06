@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmampi.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sboukiou <sboukiou@1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 18:18:49 by sboukiou          #+#    #+#             */
-/*   Updated: 2024/10/30 18:28:55 by sboukiou         ###   ########.fr       */
+/*   Created: 2024/10/31 13:31:18 by sboukiou          #+#    #+#             */
+/*   Updated: 2024/10/31 15:31:52 by sboukiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int	ft_lstsize(t_list *lst)
 {
-	char			*new_string;
-	unsigned int	index;
+	int	size;
 
-	if (!s || !f)
-		return (NULL);
-	new_string = ft_calloc(ft_strlen(s) + 1, sizeof(char));
-	if (!new_string)
-		return (NULL);
-	index = 0;
-	while (s[index])
+	size = 0;
+	while (lst)
 	{
-		new_string[index] = f(index, s[index]);
-		index++;
+		size++;
+		lst = lst->next;
 	}
-	new_string[index] = '\0';
-	return (new_string);
+	return (size);
 }
