@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+//  FIX: Handle return value issues on sensitive cases (check test)
+
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	destlen;

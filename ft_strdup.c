@@ -15,7 +15,7 @@
 char	*ft_strdup(const char *str)
 {
 	char	*buff;
-	unsigned int	count;
+	int		count;
 
 	if (!str)
 		return (NULL);

@@ -14,27 +14,18 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		count;
 	char	*buff;
-	int		buff_count;
+	int		s1_len;
+	int		s2_len;
 
 	if (!s1 || !s2)
 		return (NULL);
-	buff = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	buff = ft_calloc(s1_len + s2_len + 1, sizeof(char));
 	if (!buff)
 		return (NULL);
-	count = 0;
-	buff_count = 0;
-	while (s1[buff_count])
-	{
-		buff[buff_count] = s1[buff_count];
-		buff_count++;
-	}
-	while (s2[count])
-	{
-		buff[buff_count] = s2[count];
-		count++;
-		buff_count++;
-	}
+	ft_strlcpy(buff, s1, s1_len + 1);
+	ft_strlcat(buff, s2, s1_len + s2_len + 1);
 	return (buff);
 }
