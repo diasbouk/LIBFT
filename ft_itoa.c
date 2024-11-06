@@ -51,12 +51,25 @@ static size_t	count_buff_size(int i)
 	return (length);
 }
 
+char	*creat_zero(int n)
+{
+	(void)n;
+	char	*buff = ft_calloc(2, sizeof(char));
+	if (!buff)
+		return (NULL);
+	buff[0] = '0';
+	buff[1] = '\0';
+	return (buff);
+}
+
 char	*ft_itoa(int n)
 {
 	char			*buff;
 	int				i;
 	unsigned int	nbr;
 
+	if (n == 0)
+		return (creat_zero(n));
 	if (n < 0)
 		nbr = -n;
 	else
@@ -72,7 +85,7 @@ char	*ft_itoa(int n)
 		nbr = nbr / 10;
 	}
 	if (n < 0)
-		buff[i] = '-';
+		buff[i++] = '-';
 	buff[i] = '\0';
 	reverse_array(buff);
 	return (buff);
