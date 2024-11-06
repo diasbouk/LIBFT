@@ -32,5 +32,11 @@ int main(void)
 		return_value = -1;
 	if (test_case("Comparing different strings  size large", "source", "sourne", 68))
 		return_value = -1;
+	if (test_case("Comparing empty buffers ", "", "", 68))
+				return_value = -1;
+	if (test_case("Comparing empty buffers ", "sour", "sour", 0))
+				return_value = -1;
+	if (test_case("Comparing empty buffers ", "sour22", "sour23", 5))
+				return_value = -1;
 	return (return_value);
 }

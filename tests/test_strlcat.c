@@ -19,14 +19,20 @@ int	test_case(char *desc, char *src_val, char *dest_val, size_t src_len, size_t 
 	dest = ft_calloc(src_len + dest_len + 1, sizeof(char));
 	ft_strlcpy(dest, dest_val, dest_len + 1);
 	if (!src || !dest)
-		return (10);
+	{
+		printf("FAILED at %s\n", desc);
+		return (-1);
+	}
 
 
 	src_t = ft_strdup(src_val);
 	dest_t = ft_calloc(src_len + dest_len + 1, sizeof(char));
 	ft_strlcpy(dest_t, dest_val, dest_len + 1);
 	if (!src_t || !dest_t)
-		return (10);
+	{
+		printf("FAILED at %s\n", desc);
+		return (-1);
+	}
 
 	got = ft_strlcat(dest, src, n);
 	expected = strlcat(dest_t, src_t, n);
@@ -34,8 +40,13 @@ int	test_case(char *desc, char *src_val, char *dest_val, size_t src_len, size_t 
 	printf(" Expected : %lu --> '%s'\n", expected, dest_t);
 	printf(" Got : %lu --> '%s'\n", got, dest);
 	printf("TEST %s\n", expected == got && ft_memcmp(dest, dest_t, dest_len) == 0 ? PASSED : FAILED);
-	if (expected != got && ft_memcmp(dest, dest_t, dest_len) != 0)
+	printf("max len --> %lu\n", ft_strlen(src_t) + ft_strlen(dest_t));
+	if (expected != got || ft_memcmp(dest, dest_t, dest_len) != 0)
+	{
+		printf("FAILED at %s\n", desc);
 		return (-1);
+	}
+
 	free(src);
 	free(dest);
 	free(src_t);
@@ -57,15 +68,13 @@ int main(void)
 		return_value = -1;
 	if (test_case("testing large size", "source", "dest ", 6, 5, 22))
 		return_value = -1;
-	if (test_case("Testing with source or dest as NULL string --> FUNCTION SHOULD SEGV", NULL, NULL, 6, 5, 12))
-		return_value = -1;
 	if (test_case("Testin with source very large ,  small size for dest", "source source source source", "dest", 28, 5, 11))
 		return_value = -1;
-	if (test_case("Testin with very small chunk dest", "source source source source", "dest", 28, 5, 3))
+	if (test_case("Testin with very small chunk dest", "source source source source", "dest", 28, 5, 2))
 		return_value = -1;
 	if (test_case("Testin src valid dest null size 0", "source source source source", NULL, 28, 5, 0))
 		return_value = -1;
-	if (test_case("Testin with large space on dest ", "source source source source", "dest", 28, 35, 3))
+	if (test_case("Testin with large space on dest  LAST TEST", "source source source source", "dest", 28, 35, 2))
 		return_value = -1;
 	return (return_value);
 }

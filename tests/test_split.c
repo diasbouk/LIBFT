@@ -1,15 +1,33 @@
 #include "../libft.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
 
+int	test_case(const char *desc, char *str, char c)
+{
+	char **list = ft_split(str, c);
+	int index = 0;
+
+	printf("\n%s\n", desc);
+
+	if (!list)
+	{
+		printf("something failed");
+		return (0);
+	}
+
+	while (list[index])
+	{
+		printf("Element %d: '%s'\n", index, list[index]);
+		index++;
+	}
+
+	return (0);
+}
 
 int main(void)
 {
-	char *str = "S           l          l l plitthisstringw                     ith            spaces    ";
-	char **list = ft_split(str, ' ');
-	int i = 0;
-	while (list[i])
-		printf(" ---> %s\n", list[i++]);
+	test_case("lorem ispum classic", "as popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", ' ');
+
+	test_case("Case 2 ", "                          ", ' ');
+	test_case("Case 3", "TESt with null sep", '\0');
 	return (0);
 }

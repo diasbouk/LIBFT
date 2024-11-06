@@ -1,19 +1,52 @@
 #include "../libft.h"
 #include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
 #include <limits.h>
+#include <errno.h>
+
+int	test_case(const char *desc, char *str)
+{
+	int res_t;
+	int res;
+
+	res_t = atoi(str);
+	res = ft_atoi(str);
+
+	printf("\n%s\n", desc);
+
+	printf("Expected : '%d'\n", res_t);
+	printf("Got: '%d'\n", res);
+	printf("%s\n", res_t == res ? PASSED : FAILED);
+	if (res_t != res)
+		return (-1);
+	return (0);
+}
 
 int main(void)
 {
-	/*printf("%d\n", INT_MIN);*/
-	printf("-2147483648 -- > %d\n",ft_atoi("-2147483648"));
-	printf("-90 ---> %d\n",ft_atoi("-90"));
-	printf("-1231 ---> %d\n",ft_atoi("-1231"));
-	printf("-99999 ---> %d\n",ft_atoi("-99999"));
-	printf("-23423 ---> %d\n",ft_atoi("-23423"));
-	printf("0 ---> %d\n",ft_atoi("0"));
-	printf("-89 ---> %d\n",ft_atoi("-89"));
-	return (0);
+	int	return_value = 0;
+
+	if (test_case("Case : 123", "123"))
+		return_value = -1;
+	if (test_case("Case : 0", "0"))
+		return_value = -1;
+	if (test_case("Case : 990", "990"))
+		return_value = -1;
+	if(test_case("Case 1: 0", ft_itoa(INT_MIN)))
+		return_value = -1;
+	if(test_case("Case 1: 2147483648", "2147483648"))
+		return_value = -1;
+	if(test_case("Case 1: -2147483649", "-2147483649"))
+		return_value = -1;
+	if(test_case("Case 1: 1844674407370955161599", "1844674407370955161599"))
+		return_value = -1;
+	if(test_case("Case 1: -1844674407370955161599", "-1844674407370955161599"))
+		return_value = -1;
+	if(test_case("Case 1: 18446744073709551618", "18446744073709551618"))
+		return_value = -1;
+	if(test_case("Case 1: 9223372036854775807", "9223372036854775807"))
+		return_value = -1;
+	if(test_case("Case 1: -9223372036854775808", "-9223372036854775808"))
+		return_value = -1;
+
+	return (return_value);
 }
