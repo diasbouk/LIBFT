@@ -28,12 +28,12 @@ char	*ft_strchr(const char *s, int c)
 	count = 0;
 	while (s[count])
 	{
-		if (s[count] == c)
+		if (s[count] == (char)c)
 			return ((char *)(s + count));
 
 		count++;
 	}
-	if (c == 0)
+	if ((char)c == 0)
 		return ((char *)(s + count));
 	return (NULL);
 }

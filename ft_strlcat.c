@@ -31,5 +31,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		count++;
 	}
 	dest[destlen + count] = '\0';
+	if (size < destlen)
+		return (size + srclen);
 	return (destlen + srclen);
 }
