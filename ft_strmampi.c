@@ -14,7 +14,7 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*new_string;
+	char			*new_string;
 	unsigned int	index;
 
 	new_string = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
@@ -27,5 +27,4 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		index++;
 	}
 	return (new_string);
-
 }

@@ -1,10 +1,12 @@
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sboukiou <sboukiou@1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 15:56:04 by sboukiou          #+#    #+#             */
-/*   Updated: 2024/10/26 16:13:39 by sboukiou         ###   ########.fr       */
+/*   Created: 2024/11/06 16:58:30 by sboukiou          #+#    #+#             */
+/*   Updated: 2024/11/06 16:58:32 by sboukiou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +26,7 @@ static int	ft_isset(char c, const char *set)
 	return (0);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start_index;
 	int		end_index;

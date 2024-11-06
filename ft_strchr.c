@@ -30,7 +30,6 @@ char	*ft_strchr(const char *s, int c)
 	{
 		if (s[count] == (char)c)
 			return ((char *)(s + count));
-
 		count++;
 	}
 	if ((char)c == 0)

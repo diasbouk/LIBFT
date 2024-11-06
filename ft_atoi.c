@@ -32,13 +32,6 @@ static int	is_delim(char c)
 	* @nptr: Alphanum string to convert
 	* Return: An int depending on the nptr
 */
-
-	/* FIX: Handle MAX_SIZE input*/
-	/* FIX: remove using errno*/
-	/* NOTE: Maybe handle setting the errno value*/
-	/*PERF: Optimise this + reduce loops and time compxs*/
-
-#include <errno.h>
 int	ft_atoi(const char *nptr)
 {
 	int				count;
@@ -60,14 +53,6 @@ int	ft_atoi(const char *nptr)
 		num *= 10;
 		num += nptr[count] - '0';
 		count++;
-		if (errno == ERANGE)
-		{
-			if (sign == -1)
-				return (0);
-			if (sign == 1)
-				return (-1);
-		}
-			
 	}
 	return (num * sign);
 }

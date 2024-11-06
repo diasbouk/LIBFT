@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	size;
+	size_t			size;
 	unsigned char	*buff;
 
 	if (!s)

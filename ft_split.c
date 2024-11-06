@@ -14,12 +14,14 @@
 
 static char	**allocate_list(const char *s, char c)
 {
-	int	i;
-	int	size;
+	int		i;
+	int		size;
 	char	**block;
 
 	i = 0;
 	size = 0;
+	if (!s)
+		return (NULL);
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
@@ -29,48 +31,51 @@ static char	**allocate_list(const char *s, char c)
 		while (s[i] && s[i] != c)
 			i++;
 	}
-	block = (char **)malloc(sizeof(char *) * (size + 1));
-	if (!block)
-		return (NULL);
+	block = ft_calloc(size + 1, sizeof(char *));
 	return (block);
 }
 
 static char	*_strdup_from(const char *str, char c)
 {
-	int	i;
-	int	size;
+	int		size;
 	char	*buffer;
 
-	i = 0;
+	if (!str)
+		return (NULL);
 	size = 0;
-	while (str[i] && str[i] != c)
-	{
+	while (str[size] && str[size] != c)
 		size++;
-		i++;
-	}
-	buffer = (char *)malloc(sizeof(char) * (size + 1));
+	buffer = ft_calloc(size + 1, sizeof(char *));
 	if (!buffer)
 		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != c)
-	{
-		buffer[i] = str[i];
-		i++;
-	}
-	buffer[i] = '\0';
+	ft_strlcpy(buffer, str, size + 1);
 	return (buffer);
+}
+
+static char	**free_all(char **list)
+{
+	int	index;
+
+	index = 0;
+	while (list[index])
+	{
+		free(list[index]);
+		list[index] = NULL;
+	}
+	free(list);
+	list = NULL;
+	return (NULL);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	int	i;
+	int		i;
 	char	**list;
-	int	count;
+	char	*temp;
+	int		count;
 
 	i = 0;
 	count = 0;
-	if (!s)
-		return (NULL);
 	list = allocate_list(s, c);
 	if (!list)
 		return (NULL);
@@ -78,7 +83,11 @@ char	**ft_split(const char *s, char c)
 	{
 		while (s[i] && s[i] == c)
 			i++;
-		list[count++] = _strdup_from(s + i, c);
+		temp = _strdup_from(s + i, c);
+		if (!temp)
+			return (free_all(list));
+		list[count] = temp;
+		count++;
 		while (s[i] && s[i] != c)
 			i++;
 	}

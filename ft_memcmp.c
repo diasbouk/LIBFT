@@ -23,7 +23,7 @@ int	ft_memcmp(const void *s1, const void *s2, unsigned int n)
 	count = 0;
 	while ((s1str[count] && s2str[count]) && count < n)
 	{
-		if (s1str[count] !=  s2str[count])
+		if (s1str[count] != s2str[count])
 			return (s1str[count] - s2str[count]);
 		count++;
 	}

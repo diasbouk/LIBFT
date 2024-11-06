@@ -17,14 +17,14 @@ static int	ft_handle_sign(int n, int fd)
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		return -n;
+		return (-n);
 	}
 	return (n);
 }
 
-static char*	allocate_buffer(int n)
+static char	*allocate_buffer(int n)
 {
-	int	index;
+	int		index;
 	char	*buffer;
 
 	index = 0;
@@ -41,7 +41,7 @@ static char*	allocate_buffer(int n)
 void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	number;
-	char	*buffer;
+	char			*buffer;
 
 	if (n == 0)
 	{

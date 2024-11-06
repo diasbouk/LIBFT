@@ -14,35 +14,54 @@
 
 static void	reverse_array(char *arr)
 {
-	int	i;
-	int	j;
+	int		index;
+	int		j;
 	char	temp;
 
-	i = 0;
+	index = 0;
 	j = ft_strlen(arr) - 1;
-	while (i < j)
+	while (index < j)
 	{
-		temp = arr[i];
-		arr[i] = arr[j];
+		temp = arr[index];
+		arr[index] = arr[j];
 		arr[j] = temp;
-		i++;
+		index++;
 		j--;
 	}
+}
 
+static size_t	count_buff_size(int i)
+{
+	unsigned int	num;
+	int				length;
+
+	length = 0;
+	if (i < 0)
+	{
+		num = -i;
+		length++;
+	}
+	else
+		num = i;
+	while (num > 0)
+	{
+		length++;
+		num /= 10;
+	}
+	return (length);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*buff;
-	int	i;
+	char			*buff;
+	int				i;
 	unsigned int	nbr;
 
 	if (n < 0)
 		nbr = -n;
 	else
 		nbr = n;
-
-	buff = (char *)malloc(sizeof(char) * 1024);
+	buff = ft_calloc(count_buff_size(n) + 1, sizeof(char));
 	if (!buff)
 		return (NULL);
 	i = 0;
@@ -52,6 +71,9 @@ char	*ft_itoa(int n)
 		i++;
 		nbr = nbr / 10;
 	}
+	if (n < 0)
+		buff[i] = '-';
+	buff[i] = '\0';
 	reverse_array(buff);
 	return (buff);
 }
