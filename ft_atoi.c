@@ -22,7 +22,7 @@ static int	is_delim(char c)
 {
 	if (c == ' ' || c == '\r' || c == '\f')
 		return (1);
-	if (c == '\t' || c == '\v' || c == '\0')
+	if (c == '\t' || c == '\v')
 		return (1);
 	return (0);
 }

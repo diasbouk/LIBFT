@@ -25,7 +25,7 @@ int main(void)
 {
 	int	return_value = 0;
 
-	if (test_case("Case : 123", "123"))
+	if (test_case("Case : \t\f\v\r		123", "\t\f\v\r		123"))
 		return_value = -1;
 	if (test_case("Case : 0", "0"))
 		return_value = -1;

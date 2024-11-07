@@ -29,5 +29,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		count++;
 	}
 	dest[count] = '\0';
+	if (size < srclen)
+		return (size);
 	return (srclen);
 }
