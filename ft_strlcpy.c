@@ -23,13 +23,11 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	if (size == 0 || srclen == 0)
 		return (srclen);
 	count = 0;
-	while (count < size - 1)
+	while (count < size - 1 && src[count])
 	{
 		dest[count] = src[count];
 		count++;
 	}
 	dest[count] = '\0';
-	if (size < srclen)
-		return (size);
 	return (srclen);
 }
