@@ -15,10 +15,12 @@
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char		*substring;
+	size_t		src_len;
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	src_len = ft_strlen(s);
+	if (start >= src_len || len > src_len)
 		return (NULL);
 	if (len == 0)
 		return (ft_calloc(1, sizeof(char)));
