@@ -19,13 +19,11 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	str = (unsigned char *)s;
 	count = 0;
-	while (str[count] && count < n)
+	while (count < n)
 	{
 		if (str[count] == (unsigned char)c)
 			return (str + count);
 		count++;
 	}
-	if ((unsigned char)c == 0 && count)
-		return ((unsigned char *)str + count);
 	return (NULL);
 }
