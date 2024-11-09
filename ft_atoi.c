@@ -22,7 +22,7 @@ static int	is_delim(char c)
 {
 	if (c == ' ' || c == '\r' || c == '\f')
 		return (1);
-	if (c == '\t' || c == '\v')
+	if (c == '\t' || c == '\v' || c == '\n')
 		return (1);
 	return (0);
 }
@@ -39,6 +39,7 @@ int	ft_atoi(const char *nptr)
 	unsigned int	num;
 
 	count = 0;
+
 	while (is_delim(nptr[count]) && nptr[count])
 		count++;
 	sign = 1;
@@ -47,6 +48,8 @@ int	ft_atoi(const char *nptr)
 		sign = -1;
 		count++;
 	}
+	else if (nptr[count] == '+')
+		count++;
 	num = 0;
 	while (ft_isdigit(nptr[count]) && nptr[count])
 	{

@@ -28,8 +28,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	{
 		if (big[count] == little[0])
 		{
-			if (strncmp(big + count, little, little_len) == 0 && (count + little_len - 1) < len)
-				return ((char *)(big + count));
+			if ((count + little_len - 1) < len)
+				if (strncmp(big + count, little, little_len) == 0)
+					return ((char *)(big + count));
 		}
 		count++;
 	}
