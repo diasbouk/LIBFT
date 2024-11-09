@@ -18,7 +18,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	unsigned int	count;
 
 	srclen = ft_strlen(src);
-	if (size == 0 || srclen == 0)
+	if (size == 0)
 		return (srclen);
 	count = 0;
 	while (count < size - 1 && src[count])
