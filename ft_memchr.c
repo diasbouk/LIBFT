@@ -25,7 +25,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (str + count);
 		count++;
 	}
-	if ((unsigned char)c == 0)
+	if ((unsigned char)c == 0 && count)
 		return ((unsigned char *)str + count);
 	return (NULL);
 }
