@@ -18,12 +18,14 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	size_t		src_len;
 
 	if (!s)
-		return (NULL);
+		return (ft_calloc(1, sizeof(char)));
 	src_len = ft_strlen(s);
-	if (start >= src_len || len > src_len)
-		return (NULL);
+	if (start >= src_len)
+		return (ft_calloc(1, sizeof(char)));
 	if (len == 0 || src_len == 0)
 		return (ft_calloc(1, sizeof(char)));
+	if (len > src_len)
+		len = src_len;
 	substring = ft_calloc(len + 1, sizeof(char));
 	if (!substring)
 		return (NULL);
