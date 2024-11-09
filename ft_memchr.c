@@ -26,6 +26,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		count++;
 	}
 	if ((unsigned char)c == 0)
-		return (str + count);
+		return ((unsigned char *)str + count);
 	return (NULL);
 }
