@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-char	*ft_strnstr(const char *big, const char *little, unsigned int len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned int	little_len;
-	unsigned int	count;
+	size_t	little_len;
+	size_t	count;
 
 	if (!little)
 		return ((char *)big);
@@ -27,10 +28,10 @@ char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 	{
 		if (big[count] == little[0])
 		{
-			if (ft_strncmp(big + count, little, little_len) == 0)
+			if (strncmp(big + count, little, little_len) == 0 && (count + little_len - 1) < len)
 				return ((char *)(big + count));
 		}
 		count++;
 	}
-	return ((void *)0);
+	return (NULL);
 }
