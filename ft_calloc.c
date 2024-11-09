@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//	 FIX: handle MAX_SIZE allocation overflow
-
 #include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -23,6 +21,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	buff = malloc(nmemb * size);
 	if (!buff)
 		return (NULL);
-	ft_bzero(buff, size + 1);
+	ft_bzero(buff, nmemb * size);
 	return (buff);
 }
