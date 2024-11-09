@@ -16,8 +16,6 @@ static int	ft_isset(char c, const char *set)
 {
 	int	count;
 
-	if (c == ' ')
-		return (1);
 	count = 0;
 	while (set[count])
 	{
