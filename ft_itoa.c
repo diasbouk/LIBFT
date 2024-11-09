@@ -53,8 +53,10 @@ static size_t	count_buff_size(int i)
 
 char	*creat_zero(int n)
 {
+	char	*buff;
+
+	buff = ft_calloc(2, sizeof(char));
 	(void)n;
-	char	*buff = ft_calloc(2, sizeof(char));
 	if (!buff)
 		return (NULL);
 	buff[0] = '0';
