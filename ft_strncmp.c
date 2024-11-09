@@ -32,5 +32,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return (s1[count] - s2[count]);
 		count++;
 	}
-	return (0);
+	return (s1[count] - s2[count]);
 }
