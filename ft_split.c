@@ -76,6 +76,8 @@ char	**ft_split(const char *s, char c)
 
 	i = 0;
 	count = 0;
+	if (!s)
+		return (NULL);
 	list = allocate_list(s, c);
 	if (!list)
 		return (NULL);
@@ -86,8 +88,7 @@ char	**ft_split(const char *s, char c)
 		temp = _strdup_from(s + i, c);
 		if (!temp)
 			return (free_all(list));
-		list[count] = temp;
-		count++;
+		list[count++] = temp;
 		while (s[i] && s[i] != c)
 			i++;
 	}
