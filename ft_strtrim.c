@@ -35,10 +35,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*trimmed;
 
 	start_index = 0;
-	while (ft_isset(s1[start_index], set))
+	while (s1[start_index] && ft_isset(s1[start_index], set))
 		start_index++;
 	end_index = ft_strlen(s1);
-	while (ft_isset(s1[end_index - 1], set))
+	while (s1[start_index] && ft_isset(s1[end_index - 1], set))
 		end_index--;
 	trimmed = ft_calloc(end_index - start_index + 1, sizeof(char));
 	if (!trimmed)
