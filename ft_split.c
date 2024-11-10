@@ -12,40 +12,18 @@
 
 #include "libft.h"
 
-static char	**allocate_list(const char *s, char c)
+static char	*ft_create_string(const char *str, char c)
 {
-	int		i;
-	int		size;
-	char	**block;
-
-	i = 0;
-	size = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] && s[i] != c)
-			size++;
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	block = ft_calloc(size + 1, sizeof(char *));
-	return (block);
-}
-
-static char	*_strdup_from(const char *str, char c)
-{
-	int		size;
+	size_t	size;
 	char	*buffer;
 
 	if (!str)
 		return (NULL);
+
 	size = 0;
 	while (str[size] && str[size] != c)
 		size++;
-	buffer = ft_calloc(size + 1, sizeof(char *));
+	buffer = ft_calloc(size + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
 	ft_strlcpy(buffer, str, size + 1);
@@ -60,38 +38,48 @@ static char	**free_all(char **list)
 	while (list[index])
 	{
 		free(list[index]);
-		list[index] = NULL;
+		index++;
 	}
 	free(list);
-	list = NULL;
 	return (NULL);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(const char *str, char c)
 {
-	int		i;
+	int		index;
+	int		size;
 	char	**list;
 	char	*temp;
-	int		count;
 
-	i = 0;
-	count = 0;
-	if (!s)
+	if (!str)
 		return (NULL);
-	list = allocate_list(s, c);
+	list = NULL;
+	index = 0;
+	size = 0;
+	while (str[index])
+	{
+		while (str[index] && str[index] == c)
+			index++;
+		size++;
+		while (str[index] && str[index] != c)
+			index++;
+	}
+	list = ft_calloc(size + 1, sizeof(char *));
 	if (!list)
 		return (NULL);
-	while (s[i])
+	size = 0;
+	index = 0;
+	while (str[index])
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		temp = _strdup_from(s + i, c);
+		while (str[index] && str[index] == c)
+			index++;
+		temp = ft_create_string(str + index, c);
 		if (!temp)
 			return (free_all(list));
-		list[count++] = temp;
-		while (s[i] && s[i] != c)
-			i++;
+		list[size++]  = temp;
+		while (str[index] && str[index] != c)
+			index++;
 	}
-	list[count] = NULL;
+	list[index] = NULL;
 	return (list);
 }
