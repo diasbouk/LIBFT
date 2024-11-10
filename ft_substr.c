@@ -17,15 +17,13 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	char		*substring;
 	size_t		src_len;
 
-	if (!s)
+	if (!s || len == 0)
 		return (ft_calloc(1, sizeof(char)));
 	src_len = ft_strlen(s);
-	if (start >= src_len)
+	if (start >= src_len || src_len == 0)
 		return (ft_calloc(1, sizeof(char)));
-	if (len == 0 || src_len == 0)
-		return (ft_calloc(1, sizeof(char)));
-	if (len > src_len)
-		len = src_len;
+	if (len > src_len - start)
+		len = src_len - start;
 	substring = ft_calloc(len + 1, sizeof(char));
 	if (!substring)
 		return (NULL);
