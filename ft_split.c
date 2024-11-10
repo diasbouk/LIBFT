@@ -73,6 +73,8 @@ char	**ft_split(const char *str, char c)
 	{
 		while (str[index] && str[index] == c)
 			index++;
+		if (!str[index])
+			return (list);
 		temp = ft_create_string(str + index, c);
 		if (!temp)
 			return (free_all(list));
