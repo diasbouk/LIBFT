@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-//  FIX: Handle return value issues on sensitive cases (check test)
-
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	destlen;
@@ -22,7 +20,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 
 	destlen = ft_strlen(dest);
 	srclen = ft_strlen(src);
-	if (size == 0)
+	if (size == 0 || srclen == 0)
 		return (srclen);
 	count = 0;
 	while (destlen + count < size - 1)
