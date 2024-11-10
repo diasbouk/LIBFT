@@ -39,7 +39,6 @@ int	ft_atoi(const char *nptr)
 	unsigned int	num;
 
 	count = 0;
-
 	while (is_delim(nptr[count]) && nptr[count])
 		count++;
 	sign = 1;
