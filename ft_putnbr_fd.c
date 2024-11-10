@@ -22,26 +22,10 @@ static int	ft_handle_sign(int n, int fd)
 	return (n);
 }
 
-static char	*allocate_buffer(int n)
-{
-	int		index;
-	char	*buffer;
-
-	index = 0;
-	while (n > 0)
-	{
-		n /= 10;
-		index++;
-	}
-	buffer = (char *)malloc(sizeof(char) * (index + 1));
-	ft_bzero(buffer, index);
-	return (buffer);
-}
-
 void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	number;
-	char			*buffer;
+	char			buffer[20];
 
 	if (n == 0)
 	{
@@ -49,9 +33,7 @@ void	ft_putnbr_fd(int n, int fd)
 		return ;
 	}
 	number = ft_handle_sign(n, fd);
-	buffer = allocate_buffer(number);
-	if (!buffer)
-		return ;
+	ft_bzero(buffer, 20);
 	n = 0;
 	while (number > 0)
 	{
@@ -63,5 +45,4 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(buffer[n - 1], fd);
 		n--;
 	}
-	free(buffer);
 }
