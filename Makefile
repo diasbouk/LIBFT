@@ -18,7 +18,7 @@ all: $(NAME)
 clean:
 	rm $(OBJS)
 
-fclean:
+fclean: clean
 	rm $(NAME)
 add: $(SRC)
 	$(CC) -c $(CFLAGS) $(SRC)
