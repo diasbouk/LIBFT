@@ -60,7 +60,7 @@ char	**ft_allocate_list(const char *str, char c)
 		if (str[index])
 			size++;
 		while (str[index] && str[index] != c)
-			size++;
+			index++;
 	}
 	list = ft_calloc(size + 1, sizeof(char *));
 	return (list);
