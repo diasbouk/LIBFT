@@ -28,11 +28,11 @@ char	*ft_strrchr(const char *s, int c)
 	address = NULL;
 	while (s[count])
 	{
-		if (s[count] == c)
+		if (s[count] == (unsigned char)c)
 			address = (char *)(s + count);
 		count++;
 	}
-	if (c == 0)
+	if ((unsigned char)c == 0)
 		return ((char *)(s + count));
 	return (address);
 }
