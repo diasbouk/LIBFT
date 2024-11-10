@@ -90,6 +90,8 @@ char	**ft_split(const char *str, char c)
 				return (free_all(list));
 			list[size++] = temp;
 		}
+		while (str[index] && str[index] != c)
+			index++;
 	}
 	list[index] = NULL;
 	return (list);
