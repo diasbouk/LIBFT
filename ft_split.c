@@ -44,6 +44,28 @@ static char	**free_all(char **list)
 	return (NULL);
 }
 
+char	**ft_allocate_list(const char *str, char c)
+{
+	char	**list;
+	int		index;
+	int		size;
+
+	index = 0;
+	size = 0;
+	list = NULL;
+	while (str[index])
+	{
+		while (str[index] && str[index] == c)
+			index++;
+		if (str[index])
+			size++;
+		while (str[index] && str[index] != c)
+			size++;
+	}
+	list = ft_calloc(size + 1, sizeof(char *));
+	return (list);
+}
+
 char	**ft_split(const char *str, char c)
 {
 	int		index;
@@ -56,31 +78,22 @@ char	**ft_split(const char *str, char c)
 	list = NULL;
 	index = 0;
 	size = 0;
-	while (str[index])
-	{
-		while (str[index] && str[index] == c)
-			index++;
-		size++;
-		while (str[index] && str[index] != c)
-			index++;
-	}
-	list = ft_calloc(size + 1, sizeof(char *));
+	list = ft_allocate_list(str, c);
 	if (!list)
 		return (NULL);
-	size = 0;
-	index = 0;
 	while (str[index])
 	{
 		while (str[index] && str[index] == c)
 			index++;
-		if (!str[index])
-			return (list);
-		temp = ft_create_string(str + index, c);
-		if (!temp)
-			return (free_all(list));
-		list[size++]  = temp;
-		while (str[index] && str[index] != c)
-			index++;
+		if (str[index])
+		{
+			temp = ft_create_string(str + index, c);
+			if (!temp)
+				return (free_all(list));
+			list[size++]  = temp;
+			while (str[index] && str[index] != c)
+				index++;
+		}
 	}
 	list[index] = NULL;
 	return (list);
