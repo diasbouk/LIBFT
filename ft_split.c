@@ -19,7 +19,6 @@ static char	*ft_create_string(const char *str, char c)
 
 	if (!str)
 		return (NULL);
-
 	size = 0;
 	while (str[size] && str[size] != c)
 		size++;
@@ -75,7 +74,6 @@ char	**ft_split(const char *str, char c)
 
 	if (!str)
 		return (NULL);
-	list = NULL;
 	index = 0;
 	size = 0;
 	list = ft_allocate_list(str, c);
@@ -85,15 +83,12 @@ char	**ft_split(const char *str, char c)
 	{
 		while (str[index] && str[index] == c)
 			index++;
-		if (str[index])
-		{
-			temp = ft_create_string(str + index, c);
-			if (!temp)
-				return (free_all(list));
-			list[size++]  = temp;
-			while (str[index] && str[index] != c)
-				index++;
-		}
+		if (!str[index])
+			return (list);
+		temp = ft_create_string(str + index, c);
+		if (!temp)
+			return (free_all(list));
+		list[size++] = temp;
 	}
 	list[index] = NULL;
 	return (list);
