@@ -16,6 +16,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;
 	t_list	*new_list_head;
+	t_list	**lst_head;
 
 	if (!lst || !f || !del)
 		return (NULL);
@@ -26,6 +27,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (NULL);
 	}
 	new_list_head = new_node;
+	lst_head = &new_node;
 	while (lst->next)
 	{
 		lst = lst->next;
@@ -33,10 +35,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (!new_node)
 		{
 			ft_lstdelone(new_node, del);
-			ft_lstclear(&new_list_head, del);
+			ft_lstclear(lst_head, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_list_head, new_node);
+		ft_lstadd_back(lst_head, new_node);
 	}
 	return (new_list_head);
 }
