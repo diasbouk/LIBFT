@@ -16,7 +16,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*buff;
 
-	if ((nmemb * size) / size != nmemb)
+
+	if (nmemb && ((nmemb * size) / nmemb) != nmemb)
 		return (NULL);
 	buff = malloc(nmemb * size);
 	if (!buff)
