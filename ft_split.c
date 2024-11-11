@@ -72,7 +72,6 @@ char	**ft_split(const char *str, char c)
 	int		index;
 	int		size;
 	char	**list;
-	char	*temp;
 
 	index = 0;
 	size = 0;
@@ -85,10 +84,10 @@ char	**ft_split(const char *str, char c)
 			index++;
 		if (str[index])
 		{
-			temp = ft_create_string(str + index, c);
-			if (!temp)
+			list[size] = ft_create_string(str + index, c);
+			if (list[size] == NULL)
 				return (free_all(list));
-			list[size++] = temp;
+			size++;
 		}
 		while (str[index] && str[index] != c)
 			index++;
