@@ -8,7 +8,7 @@ BONUS_SRCS=ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstdelone_bonus.c f
 BONUS_OBJS := $(BONUS_SRCS:.c=.o)
 
 OBJS_ALL = *.o
-RM=rm
+RM=rm -f
 
 $(NAME): $(OBJS) 
 	ar -rcs libft.a $(OBJS)
