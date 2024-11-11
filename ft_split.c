@@ -92,6 +92,6 @@ char	**ft_split(const char *str, char c)
 		while (str[index] && str[index] != c)
 			index++;
 	}
-	list[index] = NULL;
+	list[size] = NULL;
 	return (list);
 }
