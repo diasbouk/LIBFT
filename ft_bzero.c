@@ -14,14 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	size;
-	char	*buf;
-
-	buf = (char *)s;
-	size = 0;
-	while (size < n)
-	{
-		buf[size] = '\0';
-		size++;
-	}
+	ft_memset(s, 0, n);
 }
