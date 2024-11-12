@@ -14,16 +14,18 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	unsigned char	*strdest;
 	unsigned char	*strsrc;
 	int				size;
 
+	strdest = (unsigned char *)dest;
 	strsrc = (unsigned char *)src;
 	if (dest <= src)
 		return (ft_memcpy(dest, src, n));
 	size = n - 1;
 	while (size >= 0)
 	{
-		ft_memset(dest, strsrc[size], 1);
+		strdest[size] = strsrc[size];
 		size--;
 	}
 	return (dest);
