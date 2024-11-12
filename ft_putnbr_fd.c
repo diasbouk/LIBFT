@@ -26,6 +26,7 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	number;
 	char			buffer[20];
+	ft_bzero(buffer, 20);
 
 	if (n == 0)
 	{
