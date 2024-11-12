@@ -15,14 +15,12 @@
 char	*ft_strdup(const char *str)
 {
 	char	*buff;
-	int		count;
 	size_t	len;
 
 	len = ft_strlen(str);
 	buff = (char *)malloc(sizeof(char) * (len + 1));
 	if (!buff)
 		return (NULL);
-	count = 0;
 	ft_strlcpy(buff, str, len + 1);
 	return (buff);
 }
