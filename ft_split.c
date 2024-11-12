@@ -43,7 +43,7 @@ static char	**free_all(char **list)
 	return (NULL);
 }
 
-char	**ft_allocate_list(const char *str, char c)
+static char	**ft_allocate_list(const char *str, char c)
 {
 	char	**list;
 	int		index;
