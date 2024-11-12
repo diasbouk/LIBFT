@@ -51,7 +51,7 @@ static size_t	count_buff_size(int i)
 	return (length);
 }
 
-char	*creat_zero(int n)
+static char	*creat_zero(int n)
 {
 	char	*buff;
 
