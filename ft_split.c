@@ -34,6 +34,8 @@ static char	**free_all(char **list)
 	int	index;
 
 	index = 0;
+	if (!list)
+		return (NULL);
 	while (list[index])
 	{
 		free(list[index]);
