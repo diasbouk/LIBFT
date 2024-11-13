@@ -32,6 +32,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end_index;
 	char	*trimmed;
 
+	if (!s1 || !set)
+		return (NULL);
 	start_index = 0;
 	while (s1[start_index] && ft_isset(s1[start_index], set))
 		start_index++;
