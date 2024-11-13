@@ -40,6 +40,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end_index = ft_strlen(s1);
 	while (s1[start_index] && ft_isset(s1[end_index - 1], set))
 		end_index--;
+	if (start_index > end_index)
+		return (NULL);
 	trimmed = ft_calloc(end_index - start_index + 1, sizeof(char));
 	if (!trimmed)
 		return (NULL);
