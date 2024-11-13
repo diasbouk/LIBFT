@@ -23,8 +23,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	len;
+	int	count;
 
-	len = ft_strlen(s);
-	return (ft_memchr(s, c, len - 1));
+	count = 0;
+	while (s[count])
+	{
+		if (s[count] == (unsigned char)c)
+			return ((char *)(s + count));
+		count++;
+	}
+	if ((unsigned char)c == 0)
+		return ((char *)(s + count));
+	return (NULL);
 }
