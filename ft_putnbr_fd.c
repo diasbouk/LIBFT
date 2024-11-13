@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-static int	ft_handle_sign(int n, int fd)
+static unsigned int	ft_handle_sign(int n, int fd)
 {
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		return (-n);
+		return ((unsigned int)-n);
 	}
-	return (n);
+	return ((unsigned int)n);
 }
 
 void	ft_putnbr_fd(int n, int fd)
