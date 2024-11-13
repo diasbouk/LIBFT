@@ -11,16 +11,16 @@ MAN_OBJS := $(MAN_SRCS:%.c=%.o)
 BONUS_SRCS=ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstclear_bonus.c ft_lstmap_bonus.c
 BONUS_OBJS := $(BONUS_SRCS:%.c=%.o)
 
-
 $(NAME): $(MAN_OBJS) 
-	ar -rcs libft.a $(MAN_OBJS)
+	$(AR) $(NAME) $(MAN_OBJS)
+
 all: $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $< -o $@
 
 clean: 
 	$(RM)  $(MAN_OBJS) $(BONUS_OBJS)
-
-%.o: %.c
-	$(CC)  $(CFLAGS) $< -o  $@
 
 fclean: clean
 	$(RM) $(NAME)
@@ -29,3 +29,5 @@ bonus: $(BONUS_OBJS)
 	$(AR) $(NAME) $(BONUS_OBJS)
 
 re: fclean all
+
+.PHONY: all re clean fclean bonus
