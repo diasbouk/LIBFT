@@ -26,5 +26,5 @@ char	*ft_strchr(const char *s, int c)
 	size_t	len;
 
 	len = ft_strlen(s);
-	return (ft_memchr(s, c, len));
+	return (ft_memchr(s, c, len - 1));
 }
